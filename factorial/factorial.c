@@ -3,40 +3,28 @@
 
 long factorial(int x) {
 
-  int i;              /* counter */
-  long this_fact;     /* factorial for this counter */
-  long last_fact = 1; /* factorial for last counter */
+  int i;         /* counter */
+  long fact = 1; /* factorial for this counter */
 
-  if (x < 2) {
+  if (x < 0) {
+    return -1;
+  } else if (x < 2) {
     return 1;
   }
-  
+
   for (i = 2; i <= x; i++) {
-    this_fact = i * last_fact;
-    last_fact = this_fact;
+    fact = i * fact;
   }
 
-  return this_fact;
+  return fact;
 }
 
-/*
- * This doesn't exactly work because strtol cannot differentiate between
- * something that doesn't convert to a number and an actual zero; strtol
- * returns 0 for both.
- */
 int main(int argc, char *argv[]) {
-  int x;
-  long fact;
+  int  test_input[5] = {-10,0,1,2,10};
+  long test_output[5] = {-1,1,1,2,3628800};
+  int  i;
 
-  if (argc < 2) {
-    printf("Usage: %s <non-negative number>\n", argv[0]);
-  } else {
-    x = strtol(argv[1], NULL, 10);
-    if (x <= 0) {
-      printf("Usage: %s <non-negative number>\n", argv[0]);
-    } else {
-      fact = factorial(x);
-      printf("The factorial of %d is: %ld\n", x, fact);
-    }
+  for (i = 0; i < 5; i++) {
+    printf("factorial(%d): %ld == %ld %s\n", test_input[i], factorial(test_input[i]), test_output[i], factorial(test_input[i])==test_output[i] ? "true" : "FALSE");
   }
 }
