@@ -19,6 +19,11 @@ long factorial(int x) {
   return this_fact;
 }
 
+/*
+ * This doesn't exactly work because strtol cannot differentiate between
+ * something that doesn't convert to a number and an actual zero; strtol
+ * returns 0 for both.
+ */
 int main(int argc, char *argv[]) {
   int x;
   long fact;
@@ -26,8 +31,12 @@ int main(int argc, char *argv[]) {
   if (argc < 2) {
     printf("Usage: %s <non-negative number>\n", argv[0]);
   } else {
-    x = atoi(argv[1]);
-    fact = factorial(x);
-    printf("The factorial of %d is: %ld\n", x, fact);
+    x = strtol(argv[1], NULL, 10);
+    if (x <= 0) {
+      printf("Usage: %s <non-negative number>\n", argv[0]);
+    } else {
+      fact = factorial(x);
+      printf("The factorial of %d is: %ld\n", x, fact);
+    }
   }
 }
