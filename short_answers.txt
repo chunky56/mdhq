@@ -1,0 +1,11 @@
+Short Technical Communication Question Answers
+
+1. O(n) means linear time complexity for an algorithm. So the time that a O(n) algorithm will take based on input size n will grow linearly--as n grows linearly, so will the algorithm time. Correspondingly, O(n^2) means quadratic time complexity, which means that as the input size n grows linearly, the time the algorithm takes will grow quadratically (n^2), much faster than linearly.
+
+2. Quicksort is a divide-and-conquer in-place sorting algorithm. It divides the array into two partitions by choosing a pivot value, then rearranges elements in the array so that all values less than the pivot are to the left of it and all values greater than the pivot are to the right of it. It then recursively calls itself on the two partitions. The resulting array is now sorted. The partitioning algorithm rearranges elements by first choosing a pivot element, putting it at the end, then going through the array and moving values to the front if it is less than the pivot. An index of where to move the next smaller value is kept until the array is traversed, then the pivot value is placed there. The pivot value is now in the "middle" of the array.
+
+3. A pointer in C is an integer value that contains the memory address of another value (x). This is regarded as a "pointer pointing to x".
+
+4. Stack memory is scratch space for a thread, while heap memory is allocated for an application/process and is shared among threads. As a result, stacks are more limited in size while heaps are generally not (more can be allocated if needed). Stacks are automatically managed (variables stored during function calls and deallocated when they exit and go out of scope), while heaps are available globally, but need to be managed more, such as synchronizing access between multiple threads. Stacks are usually faster to access because they are easy to keep track of, and are accessed for frequent caching.
+
+5. A garbage collector is used to automate memory management for a programmer, by finding and reclaiming memory space that is no longer used by the application. It helps to minimize certain types of bugs in programming, such as memory leaks, or having pointers to freed space, thus saving time (fixing memory-related bugs) and resources. It also frees developers from having to write code to manually manage memory.
